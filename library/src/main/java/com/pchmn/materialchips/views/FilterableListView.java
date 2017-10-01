@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -134,6 +135,8 @@ public class FilterableListView extends RelativeLayout {
         mChipsInput.getLocationInWindow(coord);
         ViewGroup.MarginLayoutParams layoutParams = (MarginLayoutParams) getLayoutParams();
         layoutParams.topMargin = coord[1] + mChipsInput.getHeight();
+        layoutParams.leftMargin = dpToPx(10);
+        layoutParams.rightMargin = dpToPx(10);
         // height of the keyboard
         layoutParams.bottomMargin = rootView.getHeight() - r.bottom;
         setLayoutParams(layoutParams);
@@ -144,6 +147,10 @@ public class FilterableListView extends RelativeLayout {
         setVisibility(VISIBLE);
     }
 
+    public int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
     /**
      * Fade out
      */
