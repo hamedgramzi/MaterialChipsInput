@@ -364,4 +364,8 @@ public class ChipsInput extends ScrollViewMaxHeight {
     public interface ChipValidator {
         boolean areEquals(ChipInterface chip1, ChipInterface chip2);
     }
+
+    public FilterableListView getmFilterableListView() {
+        return mFilterableListView;
+    }
 }
