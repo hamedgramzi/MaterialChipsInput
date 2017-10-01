@@ -262,18 +262,16 @@ public class FilterableAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public void addAllChip(List<ChipInterface> chips) {
+    public void changeItems(List<ChipInterface> chips) {
+        mFilteredList.clear();
+        mChipList.clear();
+        mOriginalList.clear();
+        sortList(chips);
         for (ChipInterface chip : chips) {
-
-            if (contains(chip)) {
-                mChipList.add(chip);
-                mFilteredList.add(chip);
-            }
+            mOriginalList.add(chip);
+            mChipList.add(chip);
+            mFilteredList.add(chip);
         }
-        // sort original list
-        sortList(mChipList);
-        // sort filtered list
-        sortList(mFilteredList);
         notifyDataSetChanged();
     }
 
