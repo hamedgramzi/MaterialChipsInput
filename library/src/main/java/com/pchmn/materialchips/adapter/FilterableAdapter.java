@@ -132,7 +132,11 @@ public class FilterableAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         // avatar
         if (mChipsInput.chipHasAvatarIcon() && chip.getAvatarUri() != null) {
             itemViewHolder.mAvatar.setVisibility(View.VISIBLE);
-            itemViewHolder.mAvatar.setImageURI(chip.getAvatarUri());
+            if (mChipsInput.getImageLoader() == null) {
+                itemViewHolder.mAvatar.setImageURI(chip.getAvatarUri());
+            } else {
+                mChipsInput.getImageLoader().onLoadImage(itemViewHolder.mAvatar, chip.getAvatarUri());
+            }
         } else if (mChipsInput.chipHasAvatarIcon() && chip.getAvatarDrawable() != null) {
             itemViewHolder.mAvatar.setVisibility(View.VISIBLE);
             itemViewHolder.mAvatar.setImageDrawable(chip.getAvatarDrawable());
