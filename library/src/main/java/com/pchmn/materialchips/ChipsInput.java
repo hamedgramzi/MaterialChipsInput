@@ -186,6 +186,10 @@ public class ChipsInput extends ScrollViewMaxHeight {
         mChipsAdapter.removeChip(chip);
     }
 
+    public void removeAllChip() {
+        mChipsAdapter.removeAllChip();
+    }
+
     public void removeChipById(Object id) {
         mChipsAdapter.removeChipById(id);
     }
